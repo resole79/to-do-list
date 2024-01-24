@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/css.css">
+	<title>To Do List</title>
+</head>
+ 
+<body>
+	<div class="container col-xl-10 col-xxl-8 px-2 py-2">
+		<div class="row g-lg-5 px-2 py-2">
+			<div class="col-md-10 mx-auto col-lg-5 px-2 py-2">
+				<div class="px-2 py-2 today_date"></div>
+				<form  action="/to" id="write_list" class=" px-3 py-3 border rounded-3 bg-body-secondary" method="POST" autocomplete="off">
+					<div class="form-floating mb-3">
+						<label for="todo">Enter here your think to do </label>            
+						<input type="text" class="form-control" id="todo" name="todo" autofocus="true"  />
+					</div>
+					<button id="add" class="btn btn-lg btn-primary" type="submit">Add</button>
+				</form>
+<%
+if (locals.todo && locals.todo.length > 0) { 
+%>
+				<div id="form-list" class="border rounded-3 bg-body-secondary">
+					&nbsp; To-Do List
+					<form action="/to" id="todolist" class="px-3 py-3" method="post">
+						<ul>
+
+<% 
+	let num = 0;
+	for (const element_todo of todo) {
+		if(num === todo.length - 1) { 
+%>
+
+							<li class="todo-new">							
+								<div class="d-flex justify-content-between">
+									<strong class="mb-1">
+										<input type="checkbox" class="element_todo" name="element_todo" value="<%= element_todo %>">						
+										<%= element_todo %>					
+									</strong>
+								</div>
+								<div class="col-10 mb-1 small"></div>
+							</li>
+
+<%								
+		}
+		else {
+%>
+
+							<li class="todo-old">							
+								<div class="d-flex justify-content-between">
+									<strong class="mb-1">
+										<input type="checkbox" class="element_todo" name="element_todo" value="<%= element_todo %>">						
+										<%= element_todo %>					
+									</strong>
+								</div>
+								<div class="col-10 mb-1 small"></div>
+							</li>
+
+<%								
+		}
+		num++;						
+	} 
+%>
+
+						</ul>	
+					</form>			
+				</div>
+<%
+}
+if (locals.done && locals.done.length > 0) {
+%>
+
+				<div id="form-list-done" class="border rounded-3 bg-body-secondary">
+					&nbsp; List Done
+					<form action="/clear" id="clearList" class="px-3 py-3" method="post" autocomplete="off">
+						<ul>
+
+<% 
+	let num_done = 0;
+	for (const element_done of done) {
+		if(num_done === done.length - 1) { 
+%>
+
+							<li>
+								<div class="d-flex justify-content-between done-new">
+									<strong class="mb-1">
+										<%= element_done %>					
+									</strong>
+								</div>
+							</li>
+
+<%								
+		}
+		else {
+%>
+							<li>
+								<div class="d-flex justify-content-between done-old">
+									<strong class="mb-1">
+										<%= element_done %>					
+									</strong>
+								</div>
+							</li>
+
+<%
+		}
+		num_done++;						
+	}
+%>
+						</ul>
+					
+						<input type="hidden" name="clear_list" value="clear_list">
+						<div id="clear_done_list" class="btn btn-lg btn-primary">Clear done list</div>						
+					</form>
+
+				</div>
+<%
+}
+%>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" type="text/javascript"></script>
+	<script src="./js/js.js" type="text/javascript"></script>
+
+</body>
+ 
+</html>
