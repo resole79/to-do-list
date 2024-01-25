@@ -5,6 +5,11 @@
 
 ###### It's a part of the **The Complete 2023 Web Development Bootcamp** challenge by Angela Yu. ######
 
+#### Prerequisites
+You will need the following software to run the To-Do List :
+ - [Node.js](https://nodejs.org/en/download)
+
+
 
 #### Installation
 To get started with the "To-Do List", follow these steps:
