@@ -1,6 +1,6 @@
 ## To-Do List
 
-**To-Do List** is a simple app written in *html*, *css*, *javascript* to list the tasks that you have to do, or things that you want to do.        
+**To-Do List** is a app written in *html*, *bootstrap*, *css*, *jquery*, *Node-js*, *Express*, *EJS* to list the tasks that you have to do, or things that you want to do.        
         
 
 ###### It's a part of the **The Complete 2023 Web Development Bootcamp** challenge by Angela Yu. ######
@@ -32,6 +32,10 @@ npm install
 ```sh
 node index.js
 ```
+
+5. **Launch** your preferred browser and using the url:
+> 127.0.0.1:3000 or localhost:3000
+
 
 #### *File Structure*         
 
